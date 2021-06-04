@@ -33,5 +33,13 @@ app.get('/api/config/paypal', (req, res) => {
 //   res.sendFile(path.join(`${__dirname}//frontend/build/index.html`));
 // });
 
-if (process.env.NODE_ENV === 'production') {
- app.use(express.static(path.join(__dir
+
+ app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(config.PORT, () => {
+  console.log('Server started at http://localhost:5000');
+});
