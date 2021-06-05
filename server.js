@@ -7,8 +7,10 @@ var  productRoute =require ('./routes/productRoute');
 var orderRoute =require ('./routes/orderRoute');
 var uploadRoute =require ('./routes/uploadRoute');
 var  mongoose =require ('mongoose');
-mongoose.connect('mongodb://localhost/kickskenya');
-const mongodbUrl = config.MONGODB_URL;
+let url = process.env.MONGODB_URI || 'mongodb://localhost/kickskenya';
+mongoose.connect(url, { useMongoClient: true });
+// mongoose.connect('mongodb://localhost/kickskenya');
+// const mongodbUrl = config.MONGODB_URL;
 mongoose .connect(mongodbUrl, {
   useNewUrlParser: true,
     useUnifiedTopology: true,
