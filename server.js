@@ -8,7 +8,7 @@ var orderRoute =require ('./routes/orderRoute');
 var uploadRoute =require ('./routes/uploadRoute');
 var  mongoose =require ('mongoose');
 
-mongoose.connect('mongodb://localhost/kickskenya');
+mongoose.connect(process.env.MONGODB_URL ||'mongodb://localhost/kickskenya');
 const mongodbUrl = config.MONGODB_URL;
 mongoose .connect(mongodbUrl, {
   useNewUrlParser: true,
